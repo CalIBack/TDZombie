@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://byc31i87okgdc"]
+
+[ext_resource type="Script" uid="uid://cd8xr48yoptn5" path="res://scripts/autoload/juego.gd" id="1_g4bjf"]
+
+[node name="Juego" type="Node"]
+process_mode = 3
+script = ExtResource("1_g4bjf")
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+bus = &"Musica"
+
+[connection signal="finished" from="Musica" to="Musica" method="play"]

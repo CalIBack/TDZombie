@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://cgglsovbo4mxd" path="res://scripts/mundo/llave.gd" id="1_k4v2p"]
+[ext_resource type="Texture2D" uid="uid://cyiw26snarxsk" path="res://assets/sprites/llave.png" id="2_r8m1x"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l1a8q"]
+light_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w3n7e"]
+radius = 14.0
+
+[node name="Llave" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_k4v2p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_l1a8q")
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_r8m1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_w3n7e")
+
+[node name="Sonido" type="AudioStreamPlayer2D" parent="."]
+bus = &"Efectos"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

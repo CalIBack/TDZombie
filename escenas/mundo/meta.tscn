@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dle4vn7v4y2qu"]
+
+[ext_resource type="Script" uid="uid://lg6rjejyjn0s" path="res://scripts/mundo/meta.gd" id="1_dqis5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spv9q"]
+size = Vector2(24, 64)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_sbtgc"]
+light_mode = 1
+
+[node name="Meta" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dqis5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_spv9q")
+
+[node name="Marca" type="Polygon2D" parent="."]
+material = SubResource("CanvasItemMaterial_sbtgc")
+color = Color(0.2, 1, 0.5, 0.35)
+polygon = PackedVector2Array(-12, -32, 12, -32, 12, 32, -12, 32)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

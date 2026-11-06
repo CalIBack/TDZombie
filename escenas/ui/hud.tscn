@@ -1,0 +1,238 @@
+[gd_scene format=3 uid="uid://21gu4hgotnou"]
+
+[ext_resource type="Script" uid="uid://bjjigpt64j3lj" path="res://scripts/ui/hud.gd" id="1_mdubb"]
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_mdubb")
+
+[node name="FlashRojo" type="ColorRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+mouse_filter = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.85, 0, 0.1, 1)
+
+[node name="Arriba" type="MarginContainer" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 56.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 20
+
+[node name="Fila" type="HBoxContainer" parent="Arriba"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelNivel" type="Label" parent="Arriba/Fila"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "NIVEL 1"
+
+[node name="Espacio" type="Control" parent="Arriba/Fila"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="LabelPuntos" type="Label" parent="Arriba/Fila"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 22
+text = "0 PTS"
+
+[node name="Separacion" type="Control" parent="Arriba/Fila"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="LabelTiempo" type="Label" parent="Arriba/Fila"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "00:00.00"
+
+[node name="Abajo" type="MarginContainer" parent="."]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 14
+
+[node name="Fila" type="HBoxContainer" parent="Abajo"]
+layout_mode = 2
+theme_override_constants/separation = 32
+mouse_filter = 2
+
+[node name="LabelEnemigos" type="Label" parent="Abajo/Fila"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "ENEMIGOS  0 / 0"
+
+[node name="LabelLlave" type="Label" parent="Abajo/Fila"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "LLAVE  —"
+
+[node name="Espacio" type="Control" parent="Abajo/Fila"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="LabelMunicion" type="Label" parent="Abajo/Fila"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "BALAS  12 / 12"
+
+[node name="LabelAviso" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -140.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.3, 1)
+theme_override_font_sizes/font_size = 30
+text = "NECESITÁS LA LLAVE"
+horizontal_alignment = 1
+
+[node name="PanelPausa" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Centro" type="CenterContainer" parent="PanelPausa"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Caja" type="VBoxContainer" parent="PanelPausa/Centro"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="PanelPausa/Centro/Caja"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "PAUSA"
+horizontal_alignment = 1
+
+[node name="BotonContinuar" type="Button" parent="PanelPausa/Centro/Caja"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continuar"
+
+[node name="BotonMenuPausa" type="Button" parent="PanelPausa/Centro/Caja"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menú principal"
+
+[node name="PanelFin" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Centro" type="CenterContainer" parent="PanelFin"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Caja" type="VBoxContainer" parent="PanelFin/Centro"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="TituloFin" type="Label" parent="PanelFin/Centro/Caja"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "NIVEL SUPERADO"
+horizontal_alignment = 1
+
+[node name="DetalleFin" type="Label" parent="PanelFin/Centro/Caja"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Tiempo: 00:00.00"
+horizontal_alignment = 1
+
+[node name="Botones" type="HBoxContainer" parent="PanelFin/Centro/Caja"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="BotonSiguiente" type="Button" parent="PanelFin/Centro/Caja/Botones"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Siguiente nivel"
+
+[node name="BotonReintentar" type="Button" parent="PanelFin/Centro/Caja/Botones"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jugar de nuevo"
+
+[node name="BotonRanking" type="Button" parent="PanelFin/Centro/Caja/Botones"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ver ranking"
+
+[node name="BotonMenuFin" type="Button" parent="PanelFin/Centro/Caja/Botones"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Menú"
+
+[node name="SonidoVictoria" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Efectos"
+
+[node name="SonidoDerrota" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Efectos"
+
+[connection signal="pressed" from="PanelPausa/Centro/Caja/BotonContinuar" to="." method="_on_boton_continuar_pressed"]
+[connection signal="pressed" from="PanelPausa/Centro/Caja/BotonMenuPausa" to="." method="_on_boton_menu_pressed"]
+[connection signal="pressed" from="PanelFin/Centro/Caja/Botones/BotonSiguiente" to="." method="_on_boton_siguiente_pressed"]
+[connection signal="pressed" from="PanelFin/Centro/Caja/Botones/BotonReintentar" to="." method="_on_boton_reintentar_pressed"]
+[connection signal="pressed" from="PanelFin/Centro/Caja/Botones/BotonMenuFin" to="." method="_on_boton_menu_pressed"]
+[connection signal="pressed" from="PanelFin/Centro/Caja/Botones/BotonRanking" to="." method="_on_boton_ranking_pressed"]

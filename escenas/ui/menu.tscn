@@ -1,0 +1,214 @@
+[gd_scene format=3 uid="uid://2bklv1j0pahj"]
+
+[ext_resource type="Script" uid="uid://chu43xb7jfpy8" path="res://scripts/ui/menu.gd" id="1_2ukkl"]
+[ext_resource type="PackedScene" uid="uid://c8rk4ng0tdzmb" path="res://escenas/ui/ranking.tscn" id="2_rank"]
+[ext_resource type="AudioStream" uid="uid://c1tn1nh5hgfdg" path="res://assets/audio/musica/background.mp3" id="20_musica"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ukkl")
+musica = ExtResource("20_musica")
+
+[node name="Fondo" type="ColorRect" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.02, 0.1, 1)
+
+[node name="Centro" type="CenterContainer" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelPrincipal" type="VBoxContainer" parent="Centro"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Centro/PanelPrincipal"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.6, 1)
+theme_override_font_sizes/font_size = 64
+text = "TDZOMBIE"
+horizontal_alignment = 1
+
+[node name="BotonJugar" type="Button" parent="Centro/PanelPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jugar"
+
+[node name="BotonRanking" type="Button" parent="Centro/PanelPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ranking"
+
+[node name="BotonOpciones" type="Button" parent="Centro/PanelPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Opciones"
+
+[node name="BotonSalir" type="Button" parent="Centro/PanelPrincipal"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Salir"
+
+[node name="PanelNombre" type="VBoxContainer" parent="Centro"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Centro/PanelNombre"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "¿CÓMO TE LLAMÁS?"
+horizontal_alignment = 1
+
+[node name="Explicacion" type="Label" parent="Centro/PanelNombre"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.78, 1)
+text = "Con este nombre se guarda tu puntaje en el ranking."
+horizontal_alignment = 1
+
+[node name="CampoNombre" type="LineEdit" parent="Centro/PanelNombre"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 28
+placeholder_text = "TU NOMBRE"
+alignment = 1
+max_length = 12
+
+[node name="Botones" type="HBoxContainer" parent="Centro/PanelNombre"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="BotonEmpezar" type="Button" parent="Centro/PanelNombre/Botones"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Empezar"
+
+[node name="BotonVolverNombre" type="Button" parent="Centro/PanelNombre/Botones"]
+layout_mode = 2
+text = "Volver"
+
+[node name="PanelRanking" type="VBoxContainer" parent="Centro"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Ranking" parent="Centro/PanelRanking" instance=ExtResource("2_rank")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="BotonVolverRanking" type="Button" parent="Centro/PanelRanking"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volver"
+
+[node name="PanelOpciones" type="VBoxContainer" parent="Centro"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Centro/PanelOpciones"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "OPCIONES"
+horizontal_alignment = 1
+
+[node name="Volumenes" type="GridContainer" parent="Centro/PanelOpciones"]
+layout_mode = 2
+columns = 3
+theme_override_constants/h_separation = 16
+
+[node name="LabelGeneral" type="Label" parent="Centro/PanelOpciones/Volumenes"]
+layout_mode = 2
+text = "General"
+
+[node name="SliderGeneral" type="HSlider" parent="Centro/PanelOpciones/Volumenes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 80.0
+
+[node name="ValorGeneral" type="Label" parent="Centro/PanelOpciones/Volumenes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+
+[node name="LabelMusica" type="Label" parent="Centro/PanelOpciones/Volumenes"]
+layout_mode = 2
+text = "Música"
+
+[node name="SliderMusica" type="HSlider" parent="Centro/PanelOpciones/Volumenes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 80.0
+
+[node name="ValorMusica" type="Label" parent="Centro/PanelOpciones/Volumenes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+
+[node name="LabelEfectos" type="Label" parent="Centro/PanelOpciones/Volumenes"]
+layout_mode = 2
+text = "Efectos"
+
+[node name="SliderEfectos" type="HSlider" parent="Centro/PanelOpciones/Volumenes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_vertical = 4
+value = 80.0
+
+[node name="ValorEfectos" type="Label" parent="Centro/PanelOpciones/Volumenes"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "80%"
+
+[node name="BotonVolver" type="Button" parent="Centro/PanelOpciones"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Volver"
+
+[node name="SonidoPrueba" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+bus = &"Efectos"
+
+[connection signal="value_changed" from="Centro/PanelOpciones/Volumenes/SliderGeneral" to="." method="_on_slider_general_value_changed"]
+[connection signal="value_changed" from="Centro/PanelOpciones/Volumenes/SliderMusica" to="." method="_on_slider_musica_value_changed"]
+[connection signal="value_changed" from="Centro/PanelOpciones/Volumenes/SliderEfectos" to="." method="_on_slider_efectos_value_changed"]
+[connection signal="pressed" from="Centro/PanelPrincipal/BotonJugar" to="." method="_on_boton_jugar_pressed"]
+[connection signal="pressed" from="Centro/PanelPrincipal/BotonRanking" to="." method="_on_boton_ranking_pressed"]
+[connection signal="text_changed" from="Centro/PanelNombre/CampoNombre" to="." method="_on_campo_nombre_text_changed"]
+[connection signal="text_submitted" from="Centro/PanelNombre/CampoNombre" to="." method="_on_campo_nombre_text_submitted"]
+[connection signal="pressed" from="Centro/PanelNombre/Botones/BotonEmpezar" to="." method="_on_boton_empezar_pressed"]
+[connection signal="pressed" from="Centro/PanelNombre/Botones/BotonVolverNombre" to="." method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="Centro/PanelRanking/BotonVolverRanking" to="." method="_on_boton_volver_pressed"]
+[connection signal="pressed" from="Centro/PanelPrincipal/BotonOpciones" to="." method="_on_boton_opciones_pressed"]
+[connection signal="pressed" from="Centro/PanelPrincipal/BotonSalir" to="." method="_on_boton_salir_pressed"]
+[connection signal="pressed" from="Centro/PanelOpciones/BotonVolver" to="." method="_on_boton_volver_pressed"]

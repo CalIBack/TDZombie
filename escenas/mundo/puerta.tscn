@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bf76uegjtksih"]
+
+[ext_resource type="Texture2D" uid="uid://csgbvorl12xk3" path="res://assets/sprites/tilesheet_complete.png" id="1_e3qr2"]
+[ext_resource type="Script" uid="uid://cp2w280mnnn0t" path="res://scripts/mundo/puerta.gd" id="2_icloo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ziqfo"]
+atlas = ExtResource("1_e3qr2")
+region = Rect2(768, 1120, 16, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlxb8"]
+size = Vector2(64, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gjmw"]
+size = Vector2(64, 96)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_zi9df"]
+light_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0p4qr"]
+polygon = PackedVector2Array(0, -4.5, 64, -4.5, 64, 4.5, 0, 4.5)
+
+[node name="Puerta" type="Node2D"]
+script = ExtResource("2_icloo")
+
+[node name="Hoja" type="AnimatableBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Hoja"]
+self_modulate = Color(0.7, 0.7, 0.7, 1)
+material = SubResource("CanvasItemMaterial_zi9df")
+position = Vector2(0, -4.5)
+scale = Vector2(4, 1)
+texture = SubResource("AtlasTexture_ziqfo")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hoja"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_rlxb8")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Hoja"]
+occluder = SubResource("OccluderPolygon2D_0p4qr")
+
+[node name="Sensor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_6gjmw")
+
+[node name="Sonido" type="AudioStreamPlayer2D" parent="."]
+bus = &"Efectos"
+
+[connection signal="body_entered" from="Sensor" to="." method="_on_sensor_body_entered"]

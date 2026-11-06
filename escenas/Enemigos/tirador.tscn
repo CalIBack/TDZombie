@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cvdogsvg56jny"]
+
+[ext_resource type="Script" uid="uid://cegqom0o44g5m" path="res://scripts/enemigos/tirador.gd" id="1_xpcsj"]
+[ext_resource type="Texture2D" uid="uid://xi3xmkcsr4jl" path="res://assets/sprites/Enemigo2/soldier1_gun.png" id="2_ncydp"]
+[ext_resource type="Script" uid="uid://5t6h14jeh61k" path="res://scripts/nucleo/maquina_estados.gd" id="3_yi86h"]
+[ext_resource type="Script" uid="uid://bmnf7bj70cnct" path="res://scripts/enemigos/estados/tirador/estado_tirador_guardia.gd" id="4_5pmsj"]
+[ext_resource type="Script" uid="uid://duh6kayy0p6aw" path="res://scripts/enemigos/estados/tirador/estado_tirador_atacando.gd" id="5_s357h"]
+[ext_resource type="Script" uid="uid://cpj6d8e8xakf6" path="res://scripts/enemigos/estados/tirador/estado_tirador_buscando.gd" id="6_2unak"]
+[ext_resource type="Script" uid="uid://lyycv3d1vanb" path="res://scripts/enemigos/estados/comunes/estado_enemigo_aturdido.gd" id="7_yx88g"]
+[ext_resource type="Script" uid="uid://cio8bpraafefu" path="res://scripts/enemigos/estados/comunes/estado_enemigo_muerto.gd" id="8_ss3i1"]
+[ext_resource type="AudioStream" uid="uid://b7uuiad40fftp" path="res://assets/audio/sfx/disparo.ogg" id="20_disparo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40d02"]
+radius = 15.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_zepo7"]
+light_mode = 1
+
+[node name="Tirador" type="CharacterBody2D" groups=["enemigos"]]
+collision_layer = 4
+collision_mask = 29
+motion_mode = 1
+script = ExtResource("1_xpcsj")
+mascara_vision = 11
+mascara_sonido = 16
+mascara_balas = 27
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visual"]
+texture = ExtResource("2_ncydp")
+centered = false
+offset = Vector2(-17, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_40d02")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 6.0
+target_desired_distance = 6.0
+radius = 16.0
+
+[node name="PuntaArma" type="Marker2D" parent="."]
+position = Vector2(33, 9)
+
+[node name="Laser" type="Line2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_zepo7")
+points = PackedVector2Array(33, 9, 300, 9)
+width = 2.0
+default_color = Color(1, 0.15, 0.15, 0.85)
+
+[node name="MaquinaEstados" type="Node" parent="." node_paths=PackedStringArray("estado_inicial")]
+script = ExtResource("3_yi86h")
+estado_inicial = NodePath("Guardia")
+
+[node name="Guardia" type="Node" parent="MaquinaEstados"]
+script = ExtResource("4_5pmsj")
+
+[node name="Atacando" type="Node" parent="MaquinaEstados"]
+script = ExtResource("5_s357h")
+
+[node name="Buscando" type="Node" parent="MaquinaEstados"]
+script = ExtResource("6_2unak")
+
+[node name="Aturdido" type="Node" parent="MaquinaEstados"]
+script = ExtResource("7_yx88g")
+
+[node name="Muerto" type="Node" parent="MaquinaEstados"]
+script = ExtResource("8_ss3i1")
+
+[node name="Sonidos" type="Node2D" parent="."]
+
+[node name="Impacto" type="AudioStreamPlayer2D" parent="Sonidos"]
+bus = &"Efectos"
+
+[node name="Muerte" type="AudioStreamPlayer2D" parent="Sonidos"]
+bus = &"Efectos"
+
+[node name="GolpePuerta" type="AudioStreamPlayer2D" parent="Sonidos"]
+bus = &"Efectos"
+
+[node name="Disparo" type="AudioStreamPlayer2D" parent="Sonidos"]
+stream = ExtResource("20_disparo")
+volume_db = -2.0
+max_polyphony = 3
+bus = &"Efectos"

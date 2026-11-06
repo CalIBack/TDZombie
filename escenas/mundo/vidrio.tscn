@@ -1,0 +1,57 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" uid="uid://bnsfj1vr2dpjx" path="res://scripts/mundo/vidrio.gd" id="1_v3dr1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8p2k"]
+size = Vector2(32, 8)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_n4q7s"]
+light_mode = 1
+
+[node name="Vidrio" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_v3dr1")
+
+[node name="Panel" type="Node2D" parent="."]
+material = SubResource("CanvasItemMaterial_n4q7s")
+
+[node name="Cristal" type="Polygon2D" parent="Panel"]
+use_parent_material = true
+color = Color(0.55, 0.8, 0.95, 0.8)
+polygon = PackedVector2Array(-16, -3, 16, -3, 16, 3, -16, 3)
+
+[node name="Brillo" type="Polygon2D" parent="Panel"]
+use_parent_material = true
+color = Color(0.95, 1, 1, 0.9)
+polygon = PackedVector2Array(-16, -1, 16, -1, 16, 0.5, -16, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v8p2k")
+
+[node name="Restos" type="Node2D" parent="."]
+visible = false
+modulate = Color(0.7, 0.9, 1, 0.8)
+
+[node name="Pedazo1" type="Polygon2D" parent="Restos"]
+position = Vector2(-11, -5)
+polygon = PackedVector2Array(-3, -1, 3, -1.5, 2, 1.5, -2, 1)
+
+[node name="Pedazo2" type="Polygon2D" parent="Restos"]
+position = Vector2(-3, 6)
+polygon = PackedVector2Array(-2, -1, 2, -1, 2, 1, -2, 1)
+
+[node name="Pedazo3" type="Polygon2D" parent="Restos"]
+position = Vector2(5, -6)
+polygon = PackedVector2Array(-4, -1, 3, -1, 4, 1, -3, 1)
+
+[node name="Pedazo4" type="Polygon2D" parent="Restos"]
+position = Vector2(12, 4)
+polygon = PackedVector2Array(-2, -1.5, 2, -1, 1, 1.5, -2, 1)
+
+[node name="Pedazo5" type="Polygon2D" parent="Restos"]
+position = Vector2(0, 0)
+polygon = PackedVector2Array(-3, -1, 3, -1, 3, 1, -3, 1)
+
+[node name="Sonido" type="AudioStreamPlayer2D" parent="."]
+bus = &"Efectos"

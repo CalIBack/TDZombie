@@ -1,0 +1,172 @@
+[gd_scene format=3 uid="uid://c8rk4ng0tdzmb"]
+
+[ext_resource type="Script" uid="uid://cbsf60h6uy47o" path="res://scripts/ui/ranking.gd" id="1_rank"]
+
+[node name="Ranking" type="VBoxContainer"]
+custom_minimum_size = Vector2(720, 0)
+theme_override_constants/separation = 20
+script = ExtResource("1_rank")
+
+[node name="Titulo" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "RANKING"
+horizontal_alignment = 1
+
+[node name="Podio" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Segundo" type="VBoxContainer" parent="Podio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Nombre" type="Label" parent="Podio/Segundo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.86, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+text = "NOMBRE"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Puntos" type="Label" parent="Podio/Segundo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0 PTS"
+horizontal_alignment = 1
+
+[node name="Tiempo" type="Label" parent="Podio/Segundo"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.78, 1)
+theme_override_font_sizes/font_size = 16
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="Bloque" type="ColorRect" parent="Podio/Segundo"]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+color = Color(0.62, 0.66, 0.72, 1)
+
+[node name="Puesto" type="Label" parent="Podio/Segundo/Bloque"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.07, 0.02, 0.1, 1)
+theme_override_font_sizes/font_size = 44
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Primero" type="VBoxContainer" parent="Podio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Nombre" type="Label" parent="Podio/Primero"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.25, 1)
+theme_override_font_sizes/font_size = 30
+text = "NOMBRE"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Puntos" type="Label" parent="Podio/Primero"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0 PTS"
+horizontal_alignment = 1
+
+[node name="Tiempo" type="Label" parent="Podio/Primero"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.78, 1)
+theme_override_font_sizes/font_size = 16
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="Bloque" type="ColorRect" parent="Podio/Primero"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+color = Color(0.85, 0.66, 0.15, 1)
+
+[node name="Puesto" type="Label" parent="Podio/Primero/Bloque"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.07, 0.02, 0.1, 1)
+theme_override_font_sizes/font_size = 44
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tercero" type="VBoxContainer" parent="Podio"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+alignment = 2
+
+[node name="Nombre" type="Label" parent="Podio/Tercero"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.55, 0.3, 1)
+theme_override_font_sizes/font_size = 30
+text = "NOMBRE"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Puntos" type="Label" parent="Podio/Tercero"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "0 PTS"
+horizontal_alignment = 1
+
+[node name="Tiempo" type="Label" parent="Podio/Tercero"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.78, 1)
+theme_override_font_sizes/font_size = 16
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="Bloque" type="ColorRect" parent="Podio/Tercero"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+color = Color(0.68, 0.4, 0.2, 1)
+
+[node name="Puesto" type="Label" parent="Podio/Tercero/Bloque"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.07, 0.02, 0.1, 1)
+theme_override_font_sizes/font_size = 44
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Linea" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="Lista" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 28
+theme_override_constants/v_separation = 6
+columns = 4
+
+[node name="LabelVacio" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.72, 0.78, 1)
+theme_override_font_sizes/font_size = 20
+text = "Todavía no hay partidas. ¡Jugá la primera!"
+horizontal_alignment = 1
